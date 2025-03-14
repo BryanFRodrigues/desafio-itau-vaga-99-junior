@@ -1,10 +1,10 @@
-package itauprojeto.com.Service;
+package itauprojeto.com.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import itauprojeto.com.TransacaoRepository.TransacaoRepository;
-import itauprojeto.com.Transacao.Transacao;
+import itauprojeto.com.transacao.Transacao;
+import itauprojeto.com.transacaoRepository.TransacaoRepository;
 
 
 @Service

@@ -1,41 +1,45 @@
-package itauprojeto.com.Controller;
+package itauprojeto.com.controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import itauprojeto.com.Service.TransacaoService;
-import itauprojeto.com.Transacao.Transacao;
+
+import itauprojeto.com.service.TransacaoService;
+import itauprojeto.com.transacao.Transacao;
+import itauprojeto.com.transacaoRepository.TransacaoRepository;
+
 import java.util.*;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/transacoes")
 public class TransacaoController {
 
-    private final TransacaoService service;
+    private final TransacaoRepository transacaoRepository;
 
 
-    public TransacaoController(TransacaoService service) {
-        this.service = service;
+    public TransacaoController(TransacaoRepository transacaoRepository) {
+        this.transacaoRepository = transacaoRepository;
     }
 
     @PostMapping
     public Transacao criarTransacao(@RequestBody Transacao transacao) {
-        return service.salvarTransacao(transacao);
+        return transacaoRepository.save(transacao);
     }
 
     @GetMapping
     public List<Transacao> listarTransacoes() {
-        return service.listarTransacoes();
+        return transacaoRepository.findAll();
     }
 
     @DeleteMapping("/{id}")
     public void deletarTransacao(@PathVariable Long id) {
-        service.deletarTransacao(id);
+        transacaoRepository.remove(id);
     }
 }
 
