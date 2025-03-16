@@ -21,4 +21,6 @@ public class Transacao {
 
     public OffsetDateTime getDataHora() { return dataHora; }
     public void setDataHora(OffsetDateTime dataHora) { this.dataHora = dataHora; }
+
+ 
 }

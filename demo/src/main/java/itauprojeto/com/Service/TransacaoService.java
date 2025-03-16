@@ -3,6 +3,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import itauprojeto.com.estatisticaTransacao.EstatisticaTransacao;
 import itauprojeto.com.transacao.Transacao;
 import itauprojeto.com.transacaoRepository.TransacaoRepository;
 
@@ -16,18 +17,25 @@ public class TransacaoService {
         this.repository = repository;
     }
     
-    public List<Transacao> listarTransacoes() {
-        return repository.findAll();
-    }
-
-    public Transacao salvarTransacao(Transacao transacao) {
-        if(transacao.getValor() < 0) {
-            throw new IllegalArgumentException("Valor da transação não pode ser negativo");
+        public EstatisticaTransacao operacaoAnaltica() {
+            List<Transacao> transacoes = repository.findAll();
+            int total = 0;
+            Double soma = 0.0;
+            Double media = 0.0;
+            Double min = Double.MAX_VALUE; 
+            Double max = Double.MIN_VALUE; 
+    
+            for (Transacao transacao : transacoes) {
+                total++;
+                soma += transacao.getValor();
+                media = soma / total;
+                min = Math.min(min, transacao.getValor());
+                max = Math.max(max, transacao.getValor());
+            }
+    
+            return new EstatisticaTransacao(soma, total, media, min, max);
+                
         }
-        return repository.save(transacao);
-    }
-
-    public void deletarTransacao(Long id) {
-        repository.remove(id);
-    }
+            
+                
 }

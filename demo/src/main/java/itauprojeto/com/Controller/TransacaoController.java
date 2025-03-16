@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import itauprojeto.com.service.TransacaoService;
 import itauprojeto.com.transacao.Transacao;
 import itauprojeto.com.transacaoRepository.TransacaoRepository;
 
@@ -17,7 +15,7 @@ import java.util.*;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/transacoes")
+@RequestMapping("/transacao")
 public class TransacaoController {
 
     private final TransacaoRepository transacaoRepository;
