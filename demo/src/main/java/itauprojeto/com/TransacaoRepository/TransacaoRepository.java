@@ -47,14 +47,18 @@ public class TransacaoRepository {
         Double min = 0.0;
         Double max = 0.0;
 
-        for(Transacao transacao: transacoes){
+        for(itauprojeto.com.Transacao.Transacao transacao: transacoes){
+            if(transacao.getDataHora().isBefore(OffsetDateTime.now().minusMinutes(1))){
             total ++;
             soma += transacao.getValor();
             media = soma/total;
             min = Math.min(transacao.getValor(), transacao.getValor());
             max = Math.max(transacao.getValor(), transacao.getValor());
         }
+    }
 
         return soma + "\n " + total + " \n" + media +  " \n" + min + " \n"  + max ;
     }
+
+
 }
