@@ -1,6 +1,6 @@
-package itauprojeto.com.transacaoRepository;
+package itauprojeto.com.TransacaoRepository;
 import org.springframework.stereotype.Repository;
-import itauprojeto.com.transacao.Transacao;
+import itauprojeto.com.Transacao.Transacao;
 
 import java.time.OffsetDateTime;
 import java.util.*;
@@ -37,27 +37,6 @@ public class TransacaoRepository {
 
         transacoes.put(idGerado, transacao); 
         return transacao;
-    }
-
-    public String transacoesSum(){
-        List<Transacao> transacoes = this.findAll();
-        int total =  0;
-        Double soma = 0.0;
-        Double media = 0.0;
-        Double min = 0.0;
-        Double max = 0.0;
-
-        for(itauprojeto.com.Transacao.Transacao transacao: transacoes){
-            if(transacao.getDataHora().isBefore(OffsetDateTime.now().minusMinutes(1))){
-            total ++;
-            soma += transacao.getValor();
-            media = soma/total;
-            min = Math.min(transacao.getValor(), transacao.getValor());
-            max = Math.max(transacao.getValor(), transacao.getValor());
-        }
-    }
-
-        return soma + "\n " + total + " \n" + media +  " \n" + min + " \n"  + max ;
     }
 
 

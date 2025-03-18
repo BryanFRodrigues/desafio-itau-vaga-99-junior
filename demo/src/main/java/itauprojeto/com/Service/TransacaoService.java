@@ -1,11 +1,12 @@
-package itauprojeto.com.service;
+package itauprojeto.com.Service;
 import java.util.List;
+import java.time.OffsetDateTime;
 
 import org.springframework.stereotype.Service;
 
 import itauprojeto.com.estatisticaTransacao.EstatisticaTransacao;
-import itauprojeto.com.transacao.Transacao;
-import itauprojeto.com.transacaoRepository.TransacaoRepository;
+import itauprojeto.com.Transacao.Transacao;
+import itauprojeto.com.TransacaoRepository.TransacaoRepository;
 
 
 @Service
@@ -26,6 +27,7 @@ public class TransacaoService {
             Double max = Double.MIN_VALUE; 
     
             for (Transacao transacao : transacoes) {
+                if(transacao.getDataHora().isAfter(OffsetDateTime.now().minusMinutes(1))){
                 total++;
                 soma += transacao.getValor();
                 media = soma / total;
@@ -33,9 +35,8 @@ public class TransacaoService {
                 max = Math.max(max, transacao.getValor());
             }
     
-            return new EstatisticaTransacao(soma, total, media, min, max);
-                
         }
-            
+        return new EstatisticaTransacao(soma, total, media, min, max);
+    }
                 
 }

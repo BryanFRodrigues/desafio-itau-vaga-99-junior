@@ -1,4 +1,4 @@
-package itauprojeto.com.controller;
+package itauprojeto.com.Controller;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import itauprojeto.com.transacao.Transacao;
-import itauprojeto.com.transacaoRepository.TransacaoRepository;
+import itauprojeto.com.Transacao.Transacao;
+import itauprojeto.com.TransacaoRepository.TransacaoRepository;
 
 import java.util.*;
 

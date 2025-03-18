@@ -1,4 +1,4 @@
-package itauprojeto.com.controller;
+package itauprojeto.com.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import itauprojeto.com.estatisticaTransacao.EstatisticaTransacao;
-import itauprojeto.com.service.TransacaoService;
+import itauprojeto.com.Service.TransacaoService;
 
 
 @RestController
