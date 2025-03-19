@@ -4,10 +4,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import itauprojeto.com.Transacao.Transacao;
 import itauprojeto.com.TransacaoRepository.TransacaoRepository;
 
@@ -25,6 +27,11 @@ public class TransacaoController {
         this.transacaoRepository = transacaoRepository;
     }
 
+    @ApiResponses( value = { 
+        @ApiResponse
+        (responseCode = "200", description = "Transação criada com sucesso") 
+    })
+
     @PostMapping
     public Transacao criarTransacao(@RequestBody Transacao transacao) {
         return transacaoRepository.save(transacao);
@@ -35,9 +42,9 @@ public class TransacaoController {
         return transacaoRepository.findAll();
     }
 
-    @DeleteMapping("/{id}")
-    public void deletarTransacao(@PathVariable Long id) {
-        transacaoRepository.remove(id);
+    @DeleteMapping()
+    public void deletarTransacao() {
+        transacaoRepository.remove();
     }
 }
 

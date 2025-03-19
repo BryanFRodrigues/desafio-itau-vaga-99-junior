@@ -5,10 +5,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import itauprojeto.com.estatisticaTransacao.EstatisticaTransacao;
 import itauprojeto.com.Service.TransacaoService;
 
 
+@ApiResponse(description = "Estatistica de transações")
 @RestController
 @RequestMapping("/estatistica")
 public class EstatisticaController {

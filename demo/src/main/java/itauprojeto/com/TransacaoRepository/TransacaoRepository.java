@@ -15,8 +15,8 @@ public class TransacaoRepository {
         return new ArrayList<>(transacoes.values());
     }
 
-    public Transacao remove(long id) {
-        return transacoes.remove(id);
+    public void remove() {
+        transacoes.clear();
     }
 
     private void validarTransacao(Transacao transacao) {
