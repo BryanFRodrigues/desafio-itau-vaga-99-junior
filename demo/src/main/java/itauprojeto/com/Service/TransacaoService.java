@@ -18,7 +18,7 @@ public class TransacaoService {
         this.repository = repository;
     }
     
-        public EstatisticaTransacao operacaoAnaltica() {
+        public EstatisticaTransacao operacaoAnaltica(long time) {
             List<Transacao> transacoes = repository.findAll();
             int total = 0;
             Double soma = 0.0;
@@ -27,7 +27,7 @@ public class TransacaoService {
             Double max = Double.MIN_VALUE; 
     
             for (Transacao transacao : transacoes) {
-                if(transacao.getDataHora().isAfter(OffsetDateTime.now().minusMinutes(1))){
+                if(transacao.getDataHora().isAfter(OffsetDateTime.now().minusMinutes(time))){
                 total++;
                 soma += transacao.getValor();
                 media = soma / total;
